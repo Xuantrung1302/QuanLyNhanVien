@@ -62,6 +62,7 @@ namespace QuanLyNhanVien
         }
         public async Task<int> PostIntAPI(string url, string json = null)
         {
+            
             int result = 0;
             try
             {

@@ -19,7 +19,7 @@ namespace QuanLyNhanVien
     {
         private DataTable _user = new DataTable();
         CallAPI callAPI = new CallAPI();
-        private string _url = "https://localhost:44396/api/QuanLyNhanVien/";
+        private string _url = "http://192.168.1.63:99/api/QuanLyNhanVien/";
 
         public ThongTinCaNhan(DataTable userInfo)
         {
@@ -56,17 +56,15 @@ namespace QuanLyNhanVien
                 {
                     Username = tenDangNhap,
                     PasswordHash = newPassWord,
-                    DisplayName = tenHienThi
+                    DisplayName = tenHienThi,
+                    OldPassword = passWord
                 };
 
                 // Chuyển đổi đối tượng thành JSON
                 string jsonData = JsonConvert.SerializeObject(employeeData);
-
-
                 // Gọi API
                 string url = $"{_url}suataikhoan"; // Thay bằng URL API thực tế
                 bool isSuccess = await callAPI.PostAPI(url, jsonData);
-
                 // Kiểm tra kết quả
                 if (isSuccess)
                 {
@@ -76,14 +74,19 @@ namespace QuanLyNhanVien
                 else
                 {
                     MessageBox.Show("Sửa tài khoản thất bại.");
+                    Refesh();
                 }
             }
             else
             {
                 MessageBox.Show("Nhập lại mật khẩu mới");
+                Refesh();
             }
+        }
 
-
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -17,7 +17,11 @@ namespace QuanLyNhanVien
     {
         
         CallAPI callAPI = new CallAPI();
-        private string _url = "https://localhost:44396/api/QuanLyNhanVien/";
+        private string _url = "http://192.168.1.63:99/api/QuanLyNhanVien/";
+        private int pageSize = 50;   // Số hàng trên mỗi trang
+        private int currentPage = 1; // Trang hiện tại
+        private int totalPage = 10;   // Tổng số trang
+        DataTable dtsgv = new DataTable();
 
         public DanhSachNhanVien()
         {
@@ -47,17 +51,33 @@ namespace QuanLyNhanVien
             txbTimKiemMaNV.ReadOnly = !rabTimKiemMaNV.Checked;
             txbTimKiemTenNV.ReadOnly = rabTimKiemMaNV.Checked;
         }
-        private async void LoadDataToGridView(string IdE = null, string employeeName= null)
+        private async void LoadDataToGridView(string IdE = null, string employeeName= null,int pageNumber = 1)
         {
-            string url = $"{_url}danhsachnhanvien?IdE={IdE}&employeeName={employeeName}";
-
+            string url = $"{_url}danhsachnhanvien?IdE={IdE}&employeeName={employeeName}&PageSize=50&PageNumber={pageNumber}";
             DataTable result = await callAPI.GetAPI(url);
-            dtgvDanhSachNhanVien.DataSource = result;
-        }
+            if(result.Rows.Count > 0)
+            {
+                dtgvDanhSachNhanVien.DataSource = result;
+            }    
 
+            if (result.Rows.Count < 50)
+                btnNextPage.Enabled = false;
+            else
+            {
+                btnNextPage.Enabled=true;
+            }
+            if (currentPage == 1)
+            {
+                btnPreviousPage.Enabled = false;
+            }
+            else
+            {
+                btnPreviousPage.Enabled = true;
+            }
+        }
         private async void LoadComboBoxTenPhongBan()
         {
-            string url = "https://localhost:44396/api/QuanLyPhongBan/danhsachphongban";
+            string url = "http://192.168.1.63:99/api/QuanLyPhongBan/danhsachphongban";
             DataTable result = await callAPI.GetAPI(url);
             DataTable result1 = result.Copy();
             // Thêm mục "New Item" vào DataTable
@@ -195,11 +215,11 @@ namespace QuanLyNhanVien
 
             // Cập nhật RadioButton rdbGioiTinhNhanVien với giới tính (Gender)
             string gender = dtgvDanhSachNhanVien.Rows[e.RowIndex].Cells["Gender"].Value.ToString();
-            if (gender == "Nam")
+            if (gender == "Nam" || gender == "Male")
             {
                 rdbNamNhanVien.Checked = true;
             }
-            else if (gender == "Nữ")
+            else if (gender == "Nữ" || gender == "Female")
             {
                 rdbNuNhanVien.Checked = true;
             }
@@ -238,6 +258,18 @@ namespace QuanLyNhanVien
             DangNhap formDangNhap = new DangNhap();
             formDangNhap.Show();
             this.Close();
+        }
+
+        private void btnPreviousPage_Click(object sender, EventArgs e)
+        {
+            currentPage--;
+            LoadDataToGridView(null, null, currentPage);
+        }
+
+        private void btnNextPage_Click(object sender, EventArgs e)
+        {
+            currentPage++;
+            LoadDataToGridView(null, null, currentPage);
         }
     }
 }

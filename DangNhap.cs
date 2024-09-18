@@ -21,7 +21,7 @@ namespace QuanLyNhanVien
             InitializeComponent();
         }
         CallAPI callAPI = new CallAPI();
-        private string _url = "https://localhost:44396/api/QuanLyNhanVien/";
+        private string _url = "http://192.168.1.63:99/api/QuanLyNhanVien/";
 
         //Ham kiem tra dang nhap
         private bool CheckDangNhap()
@@ -38,13 +38,6 @@ namespace QuanLyNhanVien
             }
             return true;
         }
-        private async void LoadDataToGridView(string IdAccount = null)
-        {
-            string url = $"{_url}danhsachnhanvien?IdE={IdAccount}";
-
-            DataTable result = await callAPI.GetAPI(url);
-        }
-
         private void DangNhap_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Bạn có chắc chắn muốn thoát",
@@ -54,10 +47,6 @@ namespace QuanLyNhanVien
                 e.Cancel = true;
             }
         }
-        private void btnThoatDangNhap_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
         private async void btnDangNhap_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
@@ -65,23 +54,12 @@ namespace QuanLyNhanVien
             {
                 string userName = txbTenDangNhap.Text;
                 string passWord = txbMatKhauDangNhap.Text;
-                //var loginData = new
-                //{
-                //    Username = userName,
-                //    PasswordHash = passWord
-                //};
-                //string jsonData = JsonConvert.SerializeObject(loginData);
-
-
                 // Gọi API
                 string url = $"{_url}danhsachtaikhoan?userName={userName}&passWord={passWord}"; // Thay bằng URL API thực tế
                 DataTable result = await callAPI.GetAPI(url);
-
-
                 // Kiểm tra kết quả
                 if (result.Rows.Count > 0)
                 {
-
                     TrangChu formTrangChu = new TrangChu(result);
                     this.Hide();
                     formTrangChu.ShowDialog();
@@ -92,10 +70,11 @@ namespace QuanLyNhanVien
                     MessageBox.Show("Đăng nhập thất bại.");
                 }
             }    
-            
-           
         }
-        
+        private void btnThoatDangNhap_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
     

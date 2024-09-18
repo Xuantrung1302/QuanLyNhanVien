@@ -22,10 +22,10 @@ namespace QuanLyNhanVien
         private void TrangChu_Load(object sender, EventArgs e)
         {
             DanhSachNhanVien formNhanVien = new DanhSachNhanVien();
-
+            LoadTenHienThi();
             // Gọi hàm AddFormToTabPage để load form con vào TabPage
             AddFormToTabPage(formNhanVien, tabNhanVien);
-            isFormNhanVienLoaded = true;
+            //isFormNhanVienLoaded = true;
 
         }
 
@@ -77,7 +77,18 @@ namespace QuanLyNhanVien
         {
             ThongTinCaNhan formThongTinCaNhan = new ThongTinCaNhan(_user);
             formThongTinCaNhan.ShowDialog();
-            this.Close();
+        }
+        private void LoadTenHienThi()
+        {
+            if (_user.Rows.Count > 0)
+            {
+                // Lấy giá trị từ cột "TenDangNhap" của dòng đầu tiên
+                lbHienTenDangNhap.Text = _user.Rows[0]["DisplayName"].ToString();
+            }
+            else
+            {
+                lbHienTenDangNhap.Text = "Không có tên hiển th";
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace QuanLyNhanVien
 {
@@ -20,7 +21,7 @@ namespace QuanLyNhanVien
 
  
         CallAPI callAPI = new CallAPI();
-        private string _url = "https://localhost:44396/api/QuanLyNhanVien/";
+        private string _url = "http://192.168.1.63:99/api/QuanLyNhanVien/";
         bool isExit = false;
         private void PhongBan_Load_1(object sender, EventArgs e)
         {

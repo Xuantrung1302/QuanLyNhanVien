@@ -142,7 +142,7 @@
             // thôngTinTàiKhoảnToolStripMenuItem1
             // 
             this.thôngTinTàiKhoảnToolStripMenuItem1.Name = "thôngTinTàiKhoảnToolStripMenuItem1";
-            this.thôngTinTàiKhoảnToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.thôngTinTàiKhoảnToolStripMenuItem1.Size = new System.Drawing.Size(220, 26);
             this.thôngTinTàiKhoảnToolStripMenuItem1.Text = "Thông tin tài khoản";
             this.thôngTinTàiKhoảnToolStripMenuItem1.Click += new System.EventHandler(this.thôngTinTàiKhoảnToolStripMenuItem1_Click);
             // 
@@ -159,7 +159,7 @@
             this.lbHienTenDangNhap.Name = "lbHienTenDangNhap";
             this.lbHienTenDangNhap.Size = new System.Drawing.Size(95, 23);
             this.lbHienTenDangNhap.TabIndex = 1;
-            this.lbHienTenDangNhap.Text = "label1";
+            this.lbHienTenDangNhap.Text = "Tên đăng nhập";
             // 
             // lbDangXuatTrangChu
             // 

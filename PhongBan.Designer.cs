@@ -54,7 +54,6 @@
             this.cbTenPhongBan = new System.Windows.Forms.ComboBox();
             this.grbChucNang = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnThoatPhongBan = new System.Windows.Forms.Button();
             this.btnThemPhongBan = new System.Windows.Forms.Button();
             this.btnXoaPhongBan = new System.Windows.Forms.Button();
             this.btnSuaPhongBan = new System.Windows.Forms.Button();
@@ -371,7 +370,6 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Controls.Add(this.btnThoatPhongBan, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.btnThemPhongBan, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnXoaPhongBan, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.btnSuaPhongBan, 1, 2);
@@ -387,17 +385,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(291, 191);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // btnThoatPhongBan
-            // 
-            this.btnThoatPhongBan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnThoatPhongBan.Location = new System.Drawing.Point(29, 137);
-            this.btnThoatPhongBan.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnThoatPhongBan.Name = "btnThoatPhongBan";
-            this.btnThoatPhongBan.Size = new System.Drawing.Size(232, 30);
-            this.btnThoatPhongBan.TabIndex = 3;
-            this.btnThoatPhongBan.Text = "Thoát";
-            this.btnThoatPhongBan.UseVisualStyleBackColor = true;
             // 
             // btnThemPhongBan
             // 
@@ -574,7 +561,6 @@
         private System.Windows.Forms.ComboBox cbTenPhongBan;
         private System.Windows.Forms.GroupBox grbChucNang;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button btnThoatPhongBan;
         private System.Windows.Forms.Button btnThemPhongBan;
         private System.Windows.Forms.Button btnXoaPhongBan;
         private System.Windows.Forms.Button btnSuaPhongBan;
